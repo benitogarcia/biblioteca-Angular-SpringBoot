@@ -1,0 +1,1 @@
+insert into usuarios (username, nombres, apellidos, email, password, role) values ("joosbeen","JOSE BENITO","GARCIA SOLANO","joosbeen@gmail.com","","USER");

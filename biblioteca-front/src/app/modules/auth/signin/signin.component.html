@@ -1,0 +1,66 @@
+<div class="w3-row">
+    <div class="w3-col s12 m2 l3">&nbsp;</div>
+    <div class="w3-col s12 m8 l6 w3-padding">
+
+        <mat-card class="contenedor">
+            <mat-card-title class="center">REGISTRARSE</mat-card-title>
+            <hr>
+            <mat-card-content>
+                <form class="center" [formGroup]="formSignin" (ngSubmit)="onSubmit()">
+
+                    <mat-form-field class="w-100">
+                        <mat-label>Nombre</mat-label>
+                        <input formControlName="nombres" matInput placeholder="Ingresa tu nombre">
+                        <mat-error *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)">
+                            <span *ngIf="nombres?.errors?.['required']"></span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100">
+                        <mat-label>Apellidos</mat-label>
+                        <input formControlName="apellidos" matInput placeholder="Ingresa tus apellidos">
+                        <mat-error *ngIf="apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)">
+                            <span *ngIf="apellidos?.errors?.['required']"></span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100">
+                        <mat-label>Teléfono</mat-label>
+                        <input formControlName="telefono" matInput placeholder="Ingresa tu teléfono">
+                        <mat-error *ngIf="telefono?.invalid && (telefono?.dirty || telefono?.touched)">
+                            <span *ngIf="telefono?.errors?.['required']"></span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100">
+                        <mat-label>Correo</mat-label>
+                        <input formControlName="email" matInput placeholder="Ingresa tu correo">
+                        <mat-error *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                            <span *ngIf="email?.errors?.['required']">Correo es requerido.</span>
+                            <span *ngIf="email?.errors?.['email']">Correo formato invalido.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100">
+                        <mat-label>Contraseña</mat-label>
+                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Ingresa tu contraseña">
+                        <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                            <span *ngIf="password?.errors?.['required']">Contraseña es requerido.</span>
+                            <span *ngIf="password?.errors?.['pattern']">Contraseña formato [a-zA-Z0-9._], no _ o . al principio o fin.</span>
+                        </mat-error>
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <button type="submit" class="w-80" mat-raised-button color="primary" [disabled]="formSignin.invalid">REGISTRARSE</button>
+
+                    <button type="button" [routerLink]="pageRegister" class="w-80 mt-15" mat-stroked-button
+                        color="primary">INGRESAR</button>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-4 col-s-12"></div>
+    <div class="col-4 col-s-12">
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <mat-card class="contenedor">
+                <mat-card-title class="center">LOGIN</mat-card-title>
+                <hr>
+                <mat-card-content>
+                    <form class="center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Username</mat-label>
+                            <input type="email" formControlName="correo" matInput placeholder="Ingresa tu nombre de usuario">
+                            <mat-error *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
+                                <span *ngIf="correo?.errors?.['required']">Correo es requerido.</span>
+                                <span *ngIf="correo?.errors?.['email']">Formato de correo invalido.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Contraseña</mat-label>
+                            <input type="password" formControlName="contrasena" matInput [type]="hide ? 'password' : 'text'" placeholder="Ingresa tu contraseña">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)">
+                                <span *ngIf="contrasena?.errors?.['required']">Contraseña es requerido.</span>
+                                <span *ngIf="contrasena?.errors?.['pattern']">Contraseña [a-z A-Z 0-9] DE 6-20 caracteres.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button type="submit" [disabled]="loginForm.invalid" class="w-80" mat-raised-button color="primary">INGRESASR</button>
+
+                        <button type="reset" [routerLink]="pageRegister" class="w-80 mt-15" mat-stroked-button
+                            color="primary">REGISTRAR</button>
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+        </form>
+    </div>
+</div>
